@@ -1,0 +1,191 @@
+<div class="container col-5">
+  <div>
+    <p>Rellene todos los datos marcados como obligatorios*</p>
+  </div>
+
+  <ng-container [formGroup]="formulario">
+    <div class="datosRegistro">
+      <p>Sus datos de registro</p>
+      <div class="nombre">
+        <div class="first form-group">
+          <label class="col-6" for="">Nombre de usuario: </label>
+          <input
+            class="col-5 form-control is-invalid"
+            type="text"
+            formControlName="nombreUsuario"
+            [ngClass]="{
+              'is-valid': validarFormulario('nombreUsuario').error == false,
+              'is-invalid': validarFormulario('nombreUsuario').error == true
+            }"
+          />
+          <div
+            *ngIf="validarFormulario('nombreUsuario').error"
+            class="invalid-feedback d-block"
+          >
+            {{ validarFormulario("nombreUsuario").mensaje }}
+          </div>
+        </div>
+      </div>
+
+      <div class="direccion">
+        <div class="first form-group">
+          <label class="col-6" for="">Dirección de e-mail: </label>
+          <input
+            formControlName="email"
+            class="col-5"
+            type="text"
+            class="col-5 form-control is-invalid"
+            [ngClass]="{
+              'is-valid': validarFormulario('email').error == false,
+              'is-invalid': validarFormulario('email').error == true
+            }"
+          />
+          <div
+            *ngIf="validarFormulario('email').error"
+            class="invalid-feedback d-block"
+          >
+            {{ validarFormulario("email").mensaje }}
+          </div>
+        </div>
+      </div>
+
+      <div class="password">
+        <div class="first form-group">
+          <label class="col-6" for="">Contraseña: </label>
+          <input
+            id="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+            [ngClass]="{
+              'is-valid': validarFormulario('password').error == false,
+              'is-invalid': validarFormulario('password').error == true
+            }"
+            class="col-5 form-control is-invalid"
+            type="password"
+          />
+        </div>
+        <div
+          *ngIf="validarFormulario('password').error"
+          class="invalid-feedback d-block"
+        >
+          {{ validarFormulario("password").mensaje }}
+        </div>
+      </div>
+
+      <div class="password2">
+        <div class="first form-group">
+          <label class="col-6" for="">Constraseña (otra vez): </label>
+          <input
+            formControlName="confirmPassword"
+            [ngClass]="{
+              'is-valid': validarFormulario('confirmPassword').error == false,
+              'is-invalid': validarFormulario('confirmPassword').error == true
+            }"
+            class="col-5 form-control is-invalid"
+            type="password"
+          />
+        </div>
+        <div
+          *ngIf="validarFormulario('confirmPassword').error"
+          class="invalid-feedback d-block"
+        >
+          {{ validarFormulario("confirmPassword").mensaje }}
+        </div>
+      </div>
+    </div>
+
+    <div class="datosPersonales">
+      <p>Sus datos personales</p>
+      <div class="nombreCompleto">
+        <div class="first form-group">
+          <label class="col-6" for="">Nombre y apellidos: </label>
+          <input
+            formControlName="Nombre"
+            [ngClass]="{
+              'is-valid': validarFormulario('Nombre').error == false,
+              'is-invalid': validarFormulario('Nombre').error == true
+            }"
+            class="col-5 form-control is-invalid"
+            type="text"
+          />
+          <div
+            *ngIf="validarFormulario('Nombre').error"
+            class="invalid-feedback d-block"
+          >
+            {{ validarFormulario("Nombre").mensaje }}
+          </div>
+        </div>
+      </div>
+
+      <div class="NIF">
+        <label class="col-6" for="">NIF / CIF: </label>
+        <input class="col-5" type="text" />
+      </div>
+
+      <div class="tel">
+        <div class="first form-group">
+          <label class="col-6" for="">Teléfono de contacto: </label>
+          <input
+            formControlName="Telefono"
+            [ngClass]="{
+              'is-valid': validarFormulario('Telefono').error == false,
+              'is-invalid': validarFormulario('Telefono').error == true
+            }"
+            class="col-5 form-control is-invalid"
+            type="text"
+          />
+          <div
+            *ngIf="validarFormulario('Telefono').error"
+            class="invalid-feedback d-block"
+          >
+            {{ validarFormulario("Telefono").mensaje }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="datosPersonales2">
+      <p>Sus datos personales</p>
+      <div class="direccion">
+        <label class="col-4" for="">Dirección: </label>
+        <input class="col-7 mr-2" type="text" />
+      </div>
+
+      <div class="numero">
+        <label class="col-3" for="">N°</label>
+        <input class="col-1" type="text" />
+        <label class="col-1" for="">Esc: </label>
+        <input class="col-1" type="text" />
+        <label class="col-1" for="">Piso: </label>
+        <input class="col-1 ml-3" type="text" />
+        <label class="col-1" for="">Letra: </label>
+        <input class="col-1 ml-3" type="text" />
+      </div>
+
+      <div class="cp">
+        <label class="col-4" for="">CP</label>
+        <input class="col-2" type="text" />
+        <label class="col-2" for="">Localidad: </label>
+        <input class="col-3" type="text" />
+      </div>
+
+      <div class="provincia">
+        <label class="col-4" for="">Provincia: </label>
+        <select class="col-7 mr-2" name="" id="">
+          <option value="">Seleccionar</option>
+        </select>
+      </div>
+
+      <div class="pais">
+        <label class="col-4" for="">País: </label>
+        <select class="col-7 mr-2" name="" id="">
+          <option value="">Seleccionar</option>
+          <option value="" *ngFor="let country of CountriesName">
+            {{ country }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </ng-container>
+</div>
